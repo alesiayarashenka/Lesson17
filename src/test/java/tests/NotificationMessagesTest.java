@@ -15,13 +15,6 @@ public class NotificationMessagesTest {
 
     @Test
     public void clickAtButtonCheckedNotification() {
-        List<String> listExpectedNotifications = List.of("\n" +
-                "            Action successful\n" +
-                "            ",
-        "\n" +
-                "            Action unsuccesful, please try again\n" +
-                "            ");
-
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().setSize(new Dimension(1024, 768));
@@ -31,7 +24,7 @@ public class NotificationMessagesTest {
         clickHere.click();
         driver.manage().timeouts().equals(driver.findElement(By.xpath("//div[@id='flash']")).isDisplayed());
         String actualText = driver.findElement(By.xpath("//div[@id='flash']")).getText();
-        listExpectedNotifications.contains(actualText);
+        Assert.assertEquals(actualText.split("\n")[0], "Action successful");
         driver.quit();
     }
 }

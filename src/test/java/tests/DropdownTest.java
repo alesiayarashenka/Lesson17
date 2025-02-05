@@ -3,6 +3,7 @@ package tests;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
@@ -17,20 +18,40 @@ public class DropdownTest {
         driver.manage().window().setSize(new Dimension(1024, 768));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         driver.get("https://the-internet.herokuapp.com/dropdown");
-        WebElement dropdown = driver.findElement(By.id("dropdown"));
-        Select select = new Select(dropdown);
-        List<WebElement> list = select.getOptions();
-        for(WebElement listOptions: list){
+        Select dropdown = new Select(driver.findElement(By.id("dropdown")));
+        List<WebElement> list = dropdown.getOptions();
+        for (WebElement listOptions : list) {
             listOptions.isDisplayed();
         }
-       dropdown.click();
-       WebElement firsOption = dropdown.findElement(By.xpath("//*[@id = 'dropdown']//*[@value =1]"));
-       firsOption.click();
-       firsOption.isSelected();
-       dropdown.click();
-       WebElement secondOption = dropdown.findElement(By.xpath("//*[@id = 'dropdown']//*[@value =2]"));
-       secondOption.click();
-       secondOption.isSelected();
-       driver.quit();
+        Assert.assertFalse(list.isEmpty(), "Список опций пуст!");
+        driver.quit();
+    }
+
+        @Test
+        public void SelectFirstElemFromDropdown() {
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().setSize(new Dimension(1024, 768));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        driver.get("https://the-internet.herokuapp.com/dropdown");
+        Select dropdown = new Select(driver.findElement(By.id("dropdown")));
+        dropdown.selectByValue("1");
+        WebElement firsOption = dropdown.getFirstSelectedOption();
+        Assert.assertEquals("Option 1", firsOption.getText());
+        driver.quit();
+    }
+
+    @Test
+    public void SelectSecondElemFromDropdown() {
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().setSize(new Dimension(1024, 768));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        driver.get("https://the-internet.herokuapp.com/dropdown");
+        Select dropdown = new Select(driver.findElement(By.id("dropdown")));
+        dropdown.selectByValue("2");
+        WebElement secondOption = dropdown.getFirstSelectedOption();
+        Assert.assertEquals("Option 2", secondOption.getText());
+        driver.quit();
     }
 }

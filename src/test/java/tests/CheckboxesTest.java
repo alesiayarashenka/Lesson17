@@ -20,8 +20,8 @@ public class CheckboxesTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         driver.get("https://the-internet.herokuapp.com/checkboxes");
         WebElement firstCheckbox = driver.findElement(By.xpath("//input[@type = 'checkbox'][1]"));
-        Assert.assertFalse(firstCheckbox.isSelected(), "Test passed. First checkbox is unchecked.");
         boolean firstCheckboxUnchecked = firstCheckbox.isSelected();
+        Assert.assertFalse(firstCheckboxUnchecked, "Test passed. First checkbox is unchecked.");
         firstCheckbox.click();
         boolean firstCheckboxChecked = firstCheckbox.isSelected();
         Assert.assertNotEquals(firstCheckboxUnchecked,firstCheckboxChecked);
@@ -36,8 +36,8 @@ public class CheckboxesTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         driver.get("https://the-internet.herokuapp.com/checkboxes");
         WebElement secondCheckbox = driver.findElement(By.xpath("//input[@type = 'checkbox'][2]"));
-        Assert.assertTrue(secondCheckbox.isSelected(), "Test passed. Second checkbox is checked.");
         boolean firstCheckboxUnchecked = secondCheckbox.isSelected();
+        Assert.assertTrue(firstCheckboxUnchecked, "Test passed. Second checkbox is checked.");
         secondCheckbox.click();
         boolean firstCheckboxChecked = secondCheckbox.isSelected();
         Assert.assertNotEquals(firstCheckboxUnchecked,firstCheckboxChecked);

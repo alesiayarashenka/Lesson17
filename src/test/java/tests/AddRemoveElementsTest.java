@@ -17,18 +17,18 @@ public class AddRemoveElementsTest {
     public void addDeleteElementsRemoveAndCheck() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
-        driver.manage().window().setSize(new Dimension(1024,768));
+        driver.manage().window().setSize(new Dimension(1024, 768));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         driver.get("https://the-internet.herokuapp.com/add_remove_elements/");
         WebElement addElementsButton = driver.findElement(By.xpath("//button[text()='Add Element']"));
         addElementsButton.click();
         WebElement deleteButton = driver.findElement(By.xpath("//button[text()='Delete']"));
-        deleteButton.isDisplayed();
         addElementsButton.click();
         deleteButton.click();
         List<WebElement> deleteElemButton = driver.findElements(By.xpath("//button[text()='Delete']"));
         int deleteButtonElemSize = deleteElemButton.size();
-        Assert.assertEquals(deleteButtonElemSize,1);
+        deleteButton.isDisplayed();
+        Assert.assertEquals(deleteButtonElemSize, 1);
         driver.quit();
     }
 }

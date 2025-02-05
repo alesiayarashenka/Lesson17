@@ -18,7 +18,7 @@ public class TyposTest {
         driver.manage().window().setSize(new Dimension(1024, 768));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         driver.get("https://the-internet.herokuapp.com/typos");
-        String actualTextTypos = driver.findElement(By.xpath("//*//p[2]")).getText();
+        String actualTextTypos = driver.findElement(By.xpath("//p[2]")).getText();
         String expectedTextTypos = "Sometimes you'll see a typo, other times you won't.";
         Assert.assertEquals(expectedTextTypos,actualTextTypos);
         driver.quit();
