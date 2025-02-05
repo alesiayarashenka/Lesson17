@@ -26,9 +26,7 @@ public class AddRemoveElementsTest {
         addElementsButton.click();
         deleteButton.click();
         List<WebElement> deleteElemButton = driver.findElements(By.xpath("//button[text()='Delete']"));
-        int deleteButtonElemSize = deleteElemButton.size();
-        deleteButton.isDisplayed();
-        Assert.assertEquals(deleteButtonElemSize, 1);
+        Assert.assertEquals(deleteElemButton.size(), 1);
         driver.quit();
     }
 }

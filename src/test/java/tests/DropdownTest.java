@@ -12,7 +12,7 @@ import java.util.List;
 public class DropdownTest {
 
     @Test
-    public void ElementsCheckingForDropdown() {
+    public void elementsCheckingForDropdown() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().setSize(new Dimension(1024, 768));
@@ -20,15 +20,12 @@ public class DropdownTest {
         driver.get("https://the-internet.herokuapp.com/dropdown");
         Select dropdown = new Select(driver.findElement(By.id("dropdown")));
         List<WebElement> list = dropdown.getOptions();
-        for (WebElement listOptions : list) {
-            listOptions.isDisplayed();
-        }
         Assert.assertFalse(list.isEmpty(), "Список опций пуст!");
         driver.quit();
     }
 
         @Test
-        public void SelectFirstElemFromDropdown() {
+        public void selectFirstElemFromDropdown() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().setSize(new Dimension(1024, 768));
@@ -42,7 +39,7 @@ public class DropdownTest {
     }
 
     @Test
-    public void SelectSecondElemFromDropdown() {
+    public void selectSecondElemFromDropdown() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().setSize(new Dimension(1024, 768));

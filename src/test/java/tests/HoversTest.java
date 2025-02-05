@@ -24,8 +24,7 @@ public class HoversTest {
         WebElement firstUserPhoto = driver.findElement(By.xpath("//*[@Class='figure'][1]"));
         action.moveToElement(firstUserPhoto).build().perform();
         WebElement firstUserInformation = driver.findElement(By.xpath("//*[contains(text(),'user1')]"));
-        String firstUserName = firstUserInformation.getText();
-        Assert.assertEquals(firstUserName, "name: user1");
+        Assert.assertEquals(firstUserInformation.getText(), "name: user1");
         driver.findElement(By.xpath("//*[@href='/users/1']")).click();
         WebElement textNotFound = driver.findElement(By.xpath("//h1[text() = 'Not Found']"));
         Assert.assertTrue(textNotFound.isDisplayed());
@@ -43,8 +42,7 @@ public class HoversTest {
         WebElement secondUserPhoto = driver.findElement(By.xpath("//*[@Class='figure'][2]"));
         action.moveToElement(secondUserPhoto).build().perform();
         WebElement secondUserInformation = driver.findElement(By.xpath("//*[contains(text(),'user2')]"));
-        String firstUserName = secondUserInformation.getText();
-        Assert.assertEquals(firstUserName, "name: user2");
+        Assert.assertEquals(secondUserInformation.getText(), "name: user2");
         driver.findElement(By.xpath("//*[@href='/users/2']")).click();
         WebElement textNotFound = driver.findElement(By.xpath("//h1[text() = 'Not Found']"));
         Assert.assertTrue(textNotFound.isDisplayed());
@@ -62,8 +60,7 @@ public class HoversTest {
         WebElement thirdUserPhoto = driver.findElement(By.xpath("//*[@Class='figure'][3]"));
         action.moveToElement(thirdUserPhoto).build().perform();
         WebElement thirdUserInformation = driver.findElement(By.xpath("//*[contains(text(),'user3')]"));
-        String firstUserName = thirdUserInformation.getText();
-        Assert.assertEquals(firstUserName, "name: user3");
+        Assert.assertEquals(thirdUserInformation.getText(), "name: user3");
         driver.findElement(By.xpath("//*[@href='/users/3']")).click();
         WebElement textNotFound = driver.findElement(By.xpath("//h1[text() = 'Not Found']"));
         Assert.assertTrue(textNotFound.isDisplayed());
